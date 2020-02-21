@@ -1,0 +1,30 @@
+new
+grid 70,23
+m m
+ini x 15 y 6.1 i 23 j 10
+;gen 0,0 0,6.1 48.28,6.1 48.28,0 i 1,49 j 1,7
+;gen 15,6.1 33.28,15.28 48.28,15.28 48.28,6.1 i 16,49 j 7,16
+gen 0,0 0,15.28 48.28,15.28 48.28,0
+table 1 0,6.1 15,6.1 33.28,15.28
+gen line 15,6.1 48.28,6.1
+gen table 1
+gen adjust
+gen adjust
+ini x 15 y 6.1 i 23 j 10
+model null i 22 j 10 
+model null i 22 j 11 
+model null i 23 j 11 
+model null i 24 j 11 
+model null region 25 15 
+group '1' region 1 1
+group '2' region 70 23
+prop density=1900 bulk=1e8 shear=3e7 cohesion=1e10 friction=12 group '1'
+prop density=1900 bulk=1e8 shear=3e7 cohesion=1e10 friction=0 group '2'
+set gra 10
+fix x y j 1
+fix x i 1
+fix x i 71
+solve
+ini xdisp 0 ydis 0
+ini xvel 0 yvel 0
+ret
