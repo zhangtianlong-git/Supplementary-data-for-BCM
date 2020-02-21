@@ -1,0 +1,30 @@
+new
+set echo off
+call FlacModel.txt
+def loo
+    array astore(10)
+    array afoss(1)
+	iter = 1
+    loop i (1,3)
+        oo_begin=open('Request.txt',0,1)
+        if oo_begin = 0 then
+			oo_begin=close
+            oo=open('FlacInput.txt',0,1)
+            oo=read(astore,2) 
+            oo=close
+            v1=float(parse(astore(1),1))
+            v2=float(parse(astore(2),1))
+            command
+                prop cohesion=v1 friction=v2 group '1'
+				
+				set log on
+				solve fos bracket 1,1
+				set log off
+				print fos
+				sys ren Request.txt RequestNew.txt
+            end_command
+        end_if
+		i = 1
+    end_loop
+end
+loo

@@ -1,0 +1,21 @@
+new
+grid 50,20
+m m
+gen 0,0 0,10 25,10 25,0
+table 1 10,10 20,5 25,5
+gen table 1
+gen adjust
+gen adjust
+model null region 50 20
+group '1' region 1 1
+prop density=1764 bulk=1e8 shear=3e7 cohesion=1e10 friction=10 group '1'
+set grav 10
+fix x y j 1
+fix x i 1
+fix x i 51
+solve
+ini xdisp 0 ydisp 0
+ini xvel 0 yvel 0
+;prop cohesion=9800 friction=10 group '1'
+;solve fos no_restore
+ret
